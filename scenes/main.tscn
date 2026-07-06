@@ -33,7 +33,7 @@ script = ExtResource("1_o5qli")
 show_behind_parent = true
 position = Vector2(-344, 290)
 scale = Vector2(4.56316, 4.47535)
-color = Color(1, 0.352941, 0.337255, 1)
+color = Color(1, 0.274818, 0.645482, 1)
 polygon = PackedVector2Array(231.5, -37, 171.5, -36.5, 147, 13, 174, 57.5, 234, 55, 255.744, 9.16129)
 uv = PackedVector2Array(231.5, -37, 171.5, -36.5, 147, 13, 174, 57.5, 234, 55, 262.5, 8.5)
 
@@ -60,8 +60,6 @@ vertical_alignment = 1
 autowrap_mode = 3
 uppercase = true
 max_lines_visible = 2
-visible_characters = 12
-visible_ratio = 1.33333
 text_direction = 1
 
 [node name="EnterHere" type="LineEdit" parent="Control/Panel"]
