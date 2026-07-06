@@ -18,6 +18,13 @@ jobs:
           unzip Godot_v4.2.2-stable_linux.x86_64.zip
           chmod +x Godot_v4.2.2-stable_linux.x86_64
 
+      - name: Install Export Templates
+        run: |
+          mkdir -p ~/.local/share/godot/export_templates
+          wget https://github.com/godotengine/godot/releases/download/4.2.2-stable/Godot_v4.2.2-stable_export_templates.tpz
+          unzip Godot_v4.2.2-stable_export_templates.tpz
+          mv templates/* ~/.local/share/godot/export_templates/4.2.2.stable
+
       - name: Verify project root
         run: ls -la
 
