@@ -33,7 +33,7 @@ script = ExtResource("1_o5qli")
 show_behind_parent = true
 position = Vector2(-344, 290)
 scale = Vector2(4.56316, 4.47535)
-color = Color(1, 0.274818, 0.645482, 1)
+color = Color(0.960795, 0.390257, 0.425873, 1)
 polygon = PackedVector2Array(231.5, -37, 171.5, -36.5, 147, 13, 174, 57.5, 234, 55, 255.744, 9.16129)
 uv = PackedVector2Array(231.5, -37, 171.5, -36.5, 147, 13, 174, 57.5, 234, 55, 262.5, 8.5)
 
