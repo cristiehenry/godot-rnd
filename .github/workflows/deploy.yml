@@ -17,12 +17,14 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      # 1. Downloads the correct Godot 4.2.2 engine
       - name: Setup Godot
         run: |
           wget https://github.com/godotengine/godot/releases/download/4.2.2-stable/Godot_v4.2.2-stable_linux.x86_64.zip
           unzip Godot_v4.2.2-stable_linux.x86_64.zip
           chmod +x Godot_v4.2.2-stable_linux.x86_64
 
+      # 2. Extracts templates correctly so the runner can locate them
       - name: Install Export Templates
         run: |
           mkdir -p ~/.local/share/godot/export_templates/4.2.2.stable
@@ -30,16 +32,19 @@ jobs:
           unzip Godot_v4.2.2-stable_export_templates.tpz
           mv templates/* ~/.local/share/godot/export_templates/4.2.2.stable/
 
+      # 3. Compiles the game out to build/web
       - name: Export Web
         run: |
           mkdir -p build/web
           ./Godot_v4.2.2-stable_linux.x86_64 --headless --path . --export-release "Web" build/web/index.html
 
+      # 4. Corrected repo name from gzguidoti to gzuidhof
       - name: Inject COOP/COEP Headers Bypass
         run: |
-          wget https://raw.githubusercontent.com/gzguidoti/coi-serviceworker/master/coi-serviceworker.js -O build/web/coi-serviceworker.js
+          wget https://raw.githubusercontent.com/gzuidhof/coi-serviceworker/master/coi-serviceworker.js -O build/web/coi-serviceworker.js
           sed -i 's|<script>|<script src="coi-serviceworker.js"></script><script>|g' build/web/index.html
 
+      # 5. Deploys to GitHub Pages
       - name: Setup Pages
         uses: actions/configure-pages@v4
 
