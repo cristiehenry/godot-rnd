@@ -17,7 +17,7 @@ func _on_submit_button_pressed() -> void:
 	var text = enter_here.text
 	text = text.strip_edges().to_lower()
 	
-	if text == "hello":
+	if text == "scarlet":
 		success_message.text = "You WIN"
 	else:
 		success_message.text = "try again"

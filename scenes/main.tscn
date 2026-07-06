@@ -1,59 +1,57 @@
-[gd_scene load_steps=7 format=3 uid="uid://bbvvv53m7xt4u"]
+[gd_scene load_steps=5 format=3 uid="uid://bbvvv53m7xt4u"]
 
 [ext_resource type="Script" path="res://scenes/control.gd" id="1_o5qli"]
 
 [sub_resource type="Theme" id="Theme_5c407"]
+default_font_size = 16
 
 [sub_resource type="LabelSettings" id="LabelSettings_1j03x"]
-font_size = 44
-
-[sub_resource type="Theme" id="Theme_iam74"]
-default_font_size = 45
-
-[sub_resource type="Theme" id="Theme_gfbam"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_n7lkh"]
-font_size = 45
-font_color = Color(0.481018, 0.0127848, 0.0128667, 1)
+line_spacing = 2.08165e-12
+font_color = Color(0.227108, 0.00278755, 0.00278428, 1)
 
 [node name="main" type="Node"]
 
-[node name="Control" type="Control" parent="."]
+[node name="Red" type="Control" parent="."]
 light_mask = 0
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 5.0
+offset_right = 5.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = SubResource("Theme_5c407")
 script = ExtResource("1_o5qli")
 
-[node name="Polygon2D" type="Polygon2D" parent="Control"]
+[node name="Polygon2D" type="Polygon2D" parent="Red"]
 show_behind_parent = true
-position = Vector2(-344, 290)
-scale = Vector2(4.56316, 4.47535)
-color = Color(0.960795, 0.390257, 0.425873, 1)
-polygon = PackedVector2Array(231.5, -37, 171.5, -36.5, 147, 13, 174, 57.5, 234, 55, 255.744, 9.16129)
+position = Vector2(239, 299)
+scale = Vector2(1.63489, 1.65047)
+color = Color(0.544052, 0.0952324, 0.161329, 1)
+polygon = PackedVector2Array(231.5, -37, 171.5, -36.5, 146.617, 10.9489, 172.13, 58.9898, 230.66, 58.7663, 255.744, 10.9489)
 uv = PackedVector2Array(231.5, -37, 171.5, -36.5, 147, 13, 174, 57.5, 234, 55, 262.5, 8.5)
 
-[node name="MarginContainer" type="MarginContainer" parent="Control"]
+[node name="MarginContainer" type="MarginContainer" parent="Red"]
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="Panel" type="Panel" parent="Control"]
+[node name="Panel" type="Panel" parent="Red"]
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="Label" type="Label" parent="Control/Panel"]
+[node name="Label" type="Label" parent="Red/Panel"]
 layout_mode = 0
-offset_left = 431.0
-offset_top = 161.0
-offset_right = 730.0
-offset_bottom = 271.0
-text = "say hello"
+offset_left = 516.0
+offset_top = 232.0
+offset_right = 617.0
+offset_bottom = 300.0
+text = "a scare or 
+a tide?"
 label_settings = SubResource("LabelSettings_1j03x")
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -62,47 +60,45 @@ uppercase = true
 max_lines_visible = 2
 text_direction = 1
 
-[node name="EnterHere" type="LineEdit" parent="Control/Panel"]
+[node name="EnterHere" type="LineEdit" parent="Red/Panel"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.175
 anchor_top = 0.544
 anchor_right = 1.552
 anchor_bottom = 1.195
-offset_left = 421.0
-offset_top = 235.24
-offset_right = 653.92
-offset_bottom = 280.2
-theme = SubResource("Theme_iam74")
-placeholder_text = "here"
+offset_left = 487.0
+offset_top = 265.24
+offset_right = 578.92
+offset_bottom = 275.2
+placeholder_text = "guess"
 alignment = 1
 max_length = 16
 expand_to_text_length = true
 
-[node name="SubmitButton" type="Button" parent="Control/Panel"]
+[node name="SubmitButton" type="Button" parent="Red/Panel"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.044
 anchor_top = 1.425
 anchor_right = 1.875
 anchor_bottom = 2.2
-offset_left = 479.24
-offset_top = 300.0
-offset_right = 577.0
-offset_bottom = 333.0
-theme = SubResource("Theme_gfbam")
+offset_left = 532.24
+offset_top = 266.0
+offset_right = 528.0
+offset_bottom = 266.0
 theme_override_colors/font_color = Color(0.834057, 0.253157, 0.33358, 1)
-theme_override_font_sizes/font_size = 46
+theme_override_font_sizes/font_size = 16
 action_mode = 0
 text = "submit"
 icon_alignment = 1
 
-[node name="SuccessMessage" type="Label" parent="Control/Panel"]
+[node name="SuccessMessage" type="Label" parent="Red/Panel"]
 layout_mode = 0
-offset_left = 452.0
-offset_top = 432.0
-offset_right = 695.0
-offset_bottom = 523.0
+offset_left = 520.0
+offset_top = 355.0
+offset_right = 614.0
+offset_bottom = 396.0
 label_settings = SubResource("LabelSettings_n7lkh")
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -111,4 +107,101 @@ justification_flags = 131
 max_lines_visible = 1
 visible_characters = 14
 
-[connection signal="pressed" from="Control/Panel/SubmitButton" to="Control" method="_on_submit_button_pressed"]
+[node name="Scarlet" type="Control" parent="."]
+light_mask = 0
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 4.0
+offset_top = -165.0
+offset_right = 4.0
+offset_bottom = -165.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_5c407")
+script = ExtResource("1_o5qli")
+
+[node name="Polygon2D" type="Polygon2D" parent="Scarlet"]
+show_behind_parent = true
+position = Vector2(239, 299)
+scale = Vector2(1.63489, 1.65047)
+color = Color(0.650373, 0.124727, 0.200968, 1)
+polygon = PackedVector2Array(231.5, -37, 171.5, -36.5, 146.617, 10.9489, 172.13, 58.9898, 230.66, 58.7663, 255.744, 10.9489)
+uv = PackedVector2Array(231.5, -37, 171.5, -36.5, 147, 13, 174, 57.5, 234, 55, 262.5, 8.5)
+
+[node name="MarginContainer" type="MarginContainer" parent="Scarlet"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Panel" type="Panel" parent="Scarlet"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="Scarlet/Panel"]
+layout_mode = 0
+offset_left = 510.0
+offset_top = 229.0
+offset_right = 631.0
+offset_bottom = 297.0
+text = "a letter or 
+a pimpernell?"
+label_settings = SubResource("LabelSettings_1j03x")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+uppercase = true
+max_lines_visible = 2
+text_direction = 1
+
+[node name="EnterHere" type="LineEdit" parent="Scarlet/Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.175
+anchor_top = 0.544
+anchor_right = 1.552
+anchor_bottom = 1.195
+offset_left = 487.0
+offset_top = 265.24
+offset_right = 578.92
+offset_bottom = 275.2
+placeholder_text = "guess"
+alignment = 1
+max_length = 16
+expand_to_text_length = true
+
+[node name="SubmitButton" type="Button" parent="Scarlet/Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.044
+anchor_top = 1.425
+anchor_right = 1.875
+anchor_bottom = 2.2
+offset_left = 532.24
+offset_top = 266.0
+offset_right = 528.0
+offset_bottom = 266.0
+theme_override_colors/font_color = Color(0.834057, 0.253157, 0.33358, 1)
+theme_override_font_sizes/font_size = 16
+action_mode = 0
+text = "submit"
+icon_alignment = 1
+
+[node name="SuccessMessage" type="Label" parent="Scarlet/Panel"]
+layout_mode = 0
+offset_left = 520.0
+offset_top = 355.0
+offset_right = 614.0
+offset_bottom = 396.0
+label_settings = SubResource("LabelSettings_n7lkh")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+justification_flags = 131
+max_lines_visible = 1
+visible_characters = 14
+
+[connection signal="pressed" from="Red/Panel/SubmitButton" to="Red" method="_on_submit_button_pressed"]
+[connection signal="pressed" from="Scarlet/Panel/SubmitButton" to="Scarlet" method="_on_submit_button_pressed"]
