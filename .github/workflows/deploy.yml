@@ -33,7 +33,12 @@ jobs:
       - name: Export Web
         run: |
           mkdir -p build/web
-          ./Godot_v4.2.2-stable_linux.x86_64 --headless --path . --export-release "Web"
+          ./Godot_v4.2.2-stable_linux.x86_64 --headless --path . --export-release "Web" build/web/index.html
+
+      - name: Inject COOP/COEP Headers Bypass
+        run: |
+          wget https://raw.githubusercontent.com/gzguidoti/coi-serviceworker/master/coi-serviceworker.js -O build/web/coi-serviceworker.js
+          sed -i 's|<script>|<script src="coi-serviceworker.js"></script><script>|g' build/web/index.html
 
       - name: Setup Pages
         uses: actions/configure-pages@v4
