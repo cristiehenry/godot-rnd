@@ -1,21 +1,48 @@
-[gd_scene load_steps=5 format=3 uid="uid://bbvvv53m7xt4u"]
+[gd_scene load_steps=11 format=3 uid="uid://bbvvv53m7xt4u"]
 
-[ext_resource type="Script" path="res://scenes/control.gd" id="1_o5qli"]
+[ext_resource type="Script" path="res://scripts/control.gd" id="1_o5qli"]
 
 [sub_resource type="Theme" id="Theme_5c407"]
 default_font_size = 16
 
 [sub_resource type="LabelSettings" id="LabelSettings_1j03x"]
+font_color = Color(0.631373, 0.619608, 0.580392, 1)
 
-[sub_resource type="LabelSettings" id="LabelSettings_n7lkh"]
+[sub_resource type="LabelSettings" id="LabelSettings_by8ch"]
 line_spacing = 2.08165e-12
-font_color = Color(0.227108, 0.00278755, 0.00278428, 1)
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_pnb2j"]
+line_spacing = 2.08165e-12
+
+[sub_resource type="LabelSettings" id="LabelSettings_ccyf0"]
+line_spacing = 2.08165e-12
+
+[sub_resource type="LabelSettings" id="LabelSettings_otm8c"]
+line_spacing = 2.08165e-12
+
+[sub_resource type="LabelSettings" id="LabelSettings_sil2u"]
+line_spacing = 2.08165e-12
+
+[sub_resource type="LabelSettings" id="LabelSettings_56k1r"]
+line_spacing = 2.08165e-12
+
+[sub_resource type="LabelSettings" id="LabelSettings_ok1i2"]
+line_spacing = 2.08165e-12
 
 [node name="main" type="Node"]
+metadata/_edit_vertical_guides_ = [476.0, 658.0]
+metadata/_edit_horizontal_guides_ = [235.0, 316.0, 151.0, 399.0]
 
-[node name="Red" type="Control" parent="."]
-light_mask = 0
+[node name="Control" type="Control" parent="."]
 layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Red" type="Control" parent="Control"]
+light_mask = 0
+layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -26,30 +53,33 @@ grow_vertical = 2
 theme = SubResource("Theme_5c407")
 script = ExtResource("1_o5qli")
 
-[node name="Polygon2D" type="Polygon2D" parent="Red"]
+[node name="Panel" type="Panel" parent="Control/Red"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="HexOutLine" type="Polygon2D" parent="Control/Red/Panel"]
 show_behind_parent = true
-position = Vector2(239, 299)
-scale = Vector2(1.63489, 1.65047)
-color = Color(0.544052, 0.0952324, 0.161329, 1)
+position = Vector2(226.131, 297.215)
+scale = Vector2(1.67695, 1.70851)
+color = Color(0.63, 0.61992, 0.5796, 0.996078)
 polygon = PackedVector2Array(231.5, -37, 171.5, -36.5, 146.617, 10.9489, 172.13, 58.9898, 230.66, 58.7663, 255.744, 10.9489)
 uv = PackedVector2Array(231.5, -37, 171.5, -36.5, 147, 13, 174, 57.5, 234, 55, 262.5, 8.5)
 
-[node name="MarginContainer" type="MarginContainer" parent="Red"]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+[node name="HexFill" type="Polygon2D" parent="Control/Red/Panel"]
+show_behind_parent = true
+position = Vector2(235, 298)
+scale = Vector2(1.63489, 1.65047)
+color = Color(0, 0, 0, 1)
+polygon = PackedVector2Array(231.5, -37, 171.5, -36.5, 146.617, 10.9489, 172.13, 58.9898, 230.66, 58.7663, 255.744, 10.9489)
+uv = PackedVector2Array(231.5, -37, 171.5, -36.5, 147, 13, 174, 57.5, 234, 55, 262.5, 8.5)
 
-[node name="Panel" type="Panel" parent="Red"]
+[node name="PromptLabel" type="Label" parent="Control/Red/Panel"]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="Label" type="Label" parent="Red/Panel"]
-layout_mode = 0
-offset_left = 516.0
-offset_top = 232.0
-offset_right = 617.0
-offset_bottom = 300.0
+offset_left = 515.0
+offset_top = 263.0
+offset_right = 616.0
+offset_bottom = 331.0
 text = "a scare or 
 a tide?"
 label_settings = SubResource("LabelSettings_1j03x")
@@ -60,46 +90,29 @@ uppercase = true
 max_lines_visible = 2
 text_direction = 1
 
-[node name="EnterHere" type="LineEdit" parent="Red/Panel"]
+[node name="EnterHere" type="LineEdit" parent="Control/Red/Panel"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.175
 anchor_top = 0.544
 anchor_right = 1.552
 anchor_bottom = 1.195
-offset_left = 487.0
-offset_top = 265.24
-offset_right = 578.92
-offset_bottom = 275.2
+offset_left = 496.0
+offset_top = 300.24
+offset_right = 566.92
+offset_bottom = 310.2
 placeholder_text = "guess"
 alignment = 1
 max_length = 16
 expand_to_text_length = true
 
-[node name="SubmitButton" type="Button" parent="Red/Panel"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.044
-anchor_top = 1.425
-anchor_right = 1.875
-anchor_bottom = 2.2
-offset_left = 532.24
-offset_top = 266.0
-offset_right = 528.0
-offset_bottom = 266.0
-theme_override_colors/font_color = Color(0.834057, 0.253157, 0.33358, 1)
-theme_override_font_sizes/font_size = 16
-action_mode = 0
-text = "submit"
-icon_alignment = 1
-
-[node name="SuccessMessage" type="Label" parent="Red/Panel"]
+[node name="SuccessMessage" type="Label" parent="Control/Red/Panel"]
 layout_mode = 0
 offset_left = 520.0
-offset_top = 355.0
+offset_top = 292.0
 offset_right = 614.0
-offset_bottom = 396.0
-label_settings = SubResource("LabelSettings_n7lkh")
+offset_bottom = 333.0
+label_settings = SubResource("LabelSettings_by8ch")
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
@@ -107,47 +120,53 @@ justification_flags = 131
 max_lines_visible = 1
 visible_characters = 14
 
-[node name="Scarlet" type="Control" parent="."]
+[node name="Scarlet" type="Control" parent="Control"]
 light_mask = 0
-layout_mode = 3
+layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 4.0
-offset_top = -165.0
-offset_right = 4.0
-offset_bottom = -165.0
+offset_left = 5.0
+offset_right = 5.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = SubResource("Theme_5c407")
 script = ExtResource("1_o5qli")
+correct_answer = "scarlet"
+success_color = Color(0.8, 0.0509804, 0, 1)
+solved_text_color = Color(1, 0.701556, 0.656523, 1)
 
-[node name="Polygon2D" type="Polygon2D" parent="Scarlet"]
+[node name="Panel" type="Panel" parent="Control/Scarlet"]
+layout_mode = 0
+offset_left = -47.0
+offset_top = 1.0
+offset_right = -7.0
+offset_bottom = 41.0
+
+[node name="HexOutLine" type="Polygon2D" parent="Control/Scarlet/Panel"]
 show_behind_parent = true
-position = Vector2(239, 299)
-scale = Vector2(1.63489, 1.65047)
-color = Color(0.650373, 0.124727, 0.200968, 1)
-polygon = PackedVector2Array(231.5, -37, 171.5, -36.5, 146.617, 10.9489, 172.13, 58.9898, 230.66, 58.7663, 255.744, 10.9489)
+position = Vector2(270.131, 134.215)
+scale = Vector2(1.67695, 1.70851)
+color = Color(0.63, 0.61992, 0.5796, 0.996078)
+polygon = PackedVector2Array(231.5, -37, 171.5, -36.5, 146.617, 10.9489, 172.13, 58.9898, 233.084, 58.4045, 255.744, 10.9489)
 uv = PackedVector2Array(231.5, -37, 171.5, -36.5, 147, 13, 174, 57.5, 234, 55, 262.5, 8.5)
 
-[node name="MarginContainer" type="MarginContainer" parent="Scarlet"]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+[node name="HexFill" type="Polygon2D" parent="Control/Scarlet/Panel"]
+show_behind_parent = true
+position = Vector2(279, 135)
+scale = Vector2(1.63489, 1.65047)
+color = Color(0, 0, 0, 1)
+polygon = PackedVector2Array(231.5, -37, 171.5, -36.5, 146.617, 10.9489, 172.13, 58.9898, 232.432, 59.377, 255.744, 10.9489)
+uv = PackedVector2Array(231.5, -37, 171.5, -36.5, 147, 13, 174, 57.5, 234, 55, 262.5, 8.5)
 
-[node name="Panel" type="Panel" parent="Scarlet"]
+[node name="PromptLabel" type="Label" parent="Control/Scarlet/Panel"]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="Label" type="Label" parent="Scarlet/Panel"]
-layout_mode = 0
-offset_left = 510.0
-offset_top = 229.0
-offset_right = 631.0
-offset_bottom = 297.0
-text = "a letter or 
-a pimpernell?"
+offset_left = 552.0
+offset_top = 100.0
+offset_right = 666.0
+offset_bottom = 168.0
+pivot_offset = Vector2(147, 51)
+text = "a fever or a pimpernell?"
 label_settings = SubResource("LabelSettings_1j03x")
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -156,46 +175,31 @@ uppercase = true
 max_lines_visible = 2
 text_direction = 1
 
-[node name="EnterHere" type="LineEdit" parent="Scarlet/Panel"]
+[node name="EnterHere" type="LineEdit" parent="Control/Scarlet/Panel"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.175
 anchor_top = 0.544
 anchor_right = 1.552
 anchor_bottom = 1.195
-offset_left = 487.0
-offset_top = 265.24
-offset_right = 578.92
-offset_bottom = 275.2
+offset_left = 540.0
+offset_top = 137.24
+offset_right = 610.92
+offset_bottom = 147.2
+pivot_offset = Vector2(159, -8)
 placeholder_text = "guess"
 alignment = 1
 max_length = 16
 expand_to_text_length = true
 
-[node name="SubmitButton" type="Button" parent="Scarlet/Panel"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.044
-anchor_top = 1.425
-anchor_right = 1.875
-anchor_bottom = 2.2
-offset_left = 532.24
-offset_top = 266.0
-offset_right = 528.0
-offset_bottom = 266.0
-theme_override_colors/font_color = Color(0.834057, 0.253157, 0.33358, 1)
-theme_override_font_sizes/font_size = 16
-action_mode = 0
-text = "submit"
-icon_alignment = 1
-
-[node name="SuccessMessage" type="Label" parent="Scarlet/Panel"]
+[node name="SuccessMessage" type="Label" parent="Control/Scarlet/Panel"]
 layout_mode = 0
-offset_left = 520.0
-offset_top = 355.0
-offset_right = 614.0
-offset_bottom = 396.0
-label_settings = SubResource("LabelSettings_n7lkh")
+offset_left = 564.0
+offset_top = 129.0
+offset_right = 658.0
+offset_bottom = 170.0
+pivot_offset = Vector2(142, 22)
+label_settings = SubResource("LabelSettings_pnb2j")
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
@@ -203,5 +207,445 @@ justification_flags = 131
 max_lines_visible = 1
 visible_characters = 14
 
-[connection signal="pressed" from="Red/Panel/SubmitButton" to="Red" method="_on_submit_button_pressed"]
-[connection signal="pressed" from="Scarlet/Panel/SubmitButton" to="Scarlet" method="_on_submit_button_pressed"]
+[node name="Ruby" type="Control" parent="Control"]
+light_mask = 0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 5.0
+offset_right = 5.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_5c407")
+script = ExtResource("1_o5qli")
+correct_answer = "ruby"
+success_color = Color(0.762351, 0, 0.239829, 1)
+solved_text_color = Color(0.23, 0, 0.00383327, 1)
+
+[node name="Panel" type="Panel" parent="Control/Ruby"]
+layout_mode = 0
+offset_left = -47.0
+offset_top = 1.0
+offset_right = -7.0
+offset_bottom = 41.0
+
+[node name="HexOutLine" type="Polygon2D" parent="Control/Ruby/Panel"]
+show_behind_parent = true
+position = Vector2(131.131, 216.215)
+scale = Vector2(1.67695, 1.70851)
+color = Color(0.63, 0.61992, 0.5796, 0.996078)
+polygon = PackedVector2Array(231.5, -37, 171.5, -36.5, 146.617, 10.9489, 172.13, 58.9898, 233.084, 58.4045, 255.744, 10.9489)
+uv = PackedVector2Array(231.5, -37, 171.5, -36.5, 147, 13, 174, 57.5, 234, 55, 262.5, 8.5)
+
+[node name="HexFill" type="Polygon2D" parent="Control/Ruby/Panel"]
+show_behind_parent = true
+position = Vector2(140, 217)
+scale = Vector2(1.63489, 1.65047)
+color = Color(0, 0, 0, 1)
+polygon = PackedVector2Array(231.5, -37, 171.5, -36.5, 146.617, 10.9489, 172.13, 58.9898, 232.432, 59.377, 255.744, 10.9489)
+uv = PackedVector2Array(231.5, -37, 171.5, -36.5, 147, 13, 174, 57.5, 234, 55, 262.5, 8.5)
+
+[node name="PromptLabel" type="Label" parent="Control/Ruby/Panel"]
+layout_mode = 0
+offset_left = 413.0
+offset_top = 182.0
+offset_right = 527.0
+offset_bottom = 250.0
+pivot_offset = Vector2(147, 51)
+text = "slippers or a gem?"
+label_settings = SubResource("LabelSettings_1j03x")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+uppercase = true
+max_lines_visible = 2
+text_direction = 1
+
+[node name="EnterHere" type="LineEdit" parent="Control/Ruby/Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.175
+anchor_top = 0.544
+anchor_right = 1.552
+anchor_bottom = 1.195
+offset_left = 401.0
+offset_top = 219.24
+offset_right = 471.92
+offset_bottom = 229.2
+pivot_offset = Vector2(159, -8)
+placeholder_text = "guess"
+alignment = 1
+max_length = 16
+expand_to_text_length = true
+
+[node name="SuccessMessage" type="Label" parent="Control/Ruby/Panel"]
+layout_mode = 0
+offset_left = 425.0
+offset_top = 211.0
+offset_right = 519.0
+offset_bottom = 252.0
+pivot_offset = Vector2(142, 22)
+label_settings = SubResource("LabelSettings_ccyf0")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+justification_flags = 131
+max_lines_visible = 1
+visible_characters = 14
+
+[node name="Burgundy" type="Control" parent="Control"]
+light_mask = 0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 5.0
+offset_right = 5.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_5c407")
+script = ExtResource("1_o5qli")
+correct_answer = "Burgundy"
+success_color = Color(0.380392, 0.0941176, 0.12549, 1)
+solved_text_color = Color(1, 0.816675, 0.660766, 1)
+
+[node name="Panel" type="Panel" parent="Control/Burgundy"]
+layout_mode = 0
+offset_left = -47.0
+offset_top = 1.0
+offset_right = -7.0
+offset_bottom = 41.0
+
+[node name="HexOutLine" type="Polygon2D" parent="Control/Burgundy/Panel"]
+show_behind_parent = true
+position = Vector2(132.131, 376.215)
+scale = Vector2(1.67695, 1.70851)
+color = Color(0.63, 0.61992, 0.5796, 0.996078)
+polygon = PackedVector2Array(231.5, -37, 171.5, -36.5, 146.617, 10.9489, 172.13, 58.9898, 233.084, 58.4045, 255.744, 10.9489)
+uv = PackedVector2Array(231.5, -37, 171.5, -36.5, 147, 13, 174, 57.5, 234, 55, 262.5, 8.5)
+
+[node name="HexFill" type="Polygon2D" parent="Control/Burgundy/Panel"]
+show_behind_parent = true
+position = Vector2(141, 377)
+scale = Vector2(1.63489, 1.65047)
+color = Color(0, 0, 0, 1)
+polygon = PackedVector2Array(231.5, -37, 171.5, -36.5, 146.617, 10.9489, 172.13, 58.9898, 232.432, 59.377, 255.744, 10.9489)
+uv = PackedVector2Array(231.5, -37, 171.5, -36.5, 147, 13, 174, 57.5, 234, 55, 262.5, 8.5)
+
+[node name="PromptLabel" type="Label" parent="Control/Burgundy/Panel"]
+layout_mode = 0
+offset_left = 400.0
+offset_top = 339.0
+offset_right = 546.0
+offset_bottom = 407.0
+pivot_offset = Vector2(147, 51)
+text = "a french wine or region?"
+label_settings = SubResource("LabelSettings_1j03x")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+uppercase = true
+max_lines_visible = 2
+text_direction = 1
+
+[node name="EnterHere" type="LineEdit" parent="Control/Burgundy/Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.175
+anchor_top = 0.544
+anchor_right = 1.552
+anchor_bottom = 1.195
+offset_left = 402.0
+offset_top = 379.24
+offset_right = 472.92
+offset_bottom = 389.2
+pivot_offset = Vector2(159, -8)
+placeholder_text = "guess"
+alignment = 1
+max_length = 16
+expand_to_text_length = true
+
+[node name="SuccessMessage" type="Label" parent="Control/Burgundy/Panel"]
+layout_mode = 0
+offset_left = 426.0
+offset_top = 371.0
+offset_right = 520.0
+offset_bottom = 412.0
+pivot_offset = Vector2(142, 22)
+label_settings = SubResource("LabelSettings_otm8c")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+justification_flags = 131
+max_lines_visible = 1
+visible_characters = 14
+
+[node name="Wine" type="Control" parent="Control"]
+light_mask = 0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 5.0
+offset_right = 5.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_5c407")
+script = ExtResource("1_o5qli")
+correct_answer = "wine"
+success_color = Color(0.364706, 0, 0.141176, 1)
+solved_text_color = Color(1, 0.77531, 0.7382, 1)
+
+[node name="Panel" type="Panel" parent="Control/Wine"]
+layout_mode = 0
+offset_left = -47.0
+offset_top = 1.0
+offset_right = -7.0
+offset_bottom = 41.0
+
+[node name="HexOutLine" type="Polygon2D" parent="Control/Wine/Panel"]
+show_behind_parent = true
+position = Vector2(412.131, 377.215)
+scale = Vector2(1.67695, 1.70851)
+color = Color(0.63, 0.61992, 0.5796, 0.996078)
+polygon = PackedVector2Array(231.5, -37, 171.5, -36.5, 157.616, -10.025, 146.617, 10.9489, 172.13, 58.9898, 233.084, 58.4045, 255.744, 10.9489)
+uv = PackedVector2Array(231.5, -37, 171.5, -36.5, 147, 13, 174, 57.5, 234, 55, 262.5, 8.5)
+
+[node name="HexFill" type="Polygon2D" parent="Control/Wine/Panel"]
+show_behind_parent = true
+position = Vector2(421, 378)
+scale = Vector2(1.63489, 1.65047)
+color = Color(0, 0, 0, 1)
+polygon = PackedVector2Array(231.5, -37, 171.5, -36.5, 146.617, 10.9489, 172.13, 58.9898, 232.432, 59.377, 255.744, 10.9489)
+uv = PackedVector2Array(231.5, -37, 171.5, -36.5, 147, 13, 174, 57.5, 234, 55, 262.5, 8.5)
+
+[node name="PromptLabel" type="Label" parent="Control/Wine/Panel"]
+layout_mode = 0
+offset_left = 685.0
+offset_top = 342.0
+offset_right = 818.0
+offset_bottom = 410.0
+pivot_offset = Vector2(147, 51)
+text = "a drink made from grapes?"
+label_settings = SubResource("LabelSettings_1j03x")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+uppercase = true
+max_lines_visible = 2
+text_direction = 1
+
+[node name="EnterHere" type="LineEdit" parent="Control/Wine/Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.175
+anchor_top = 0.544
+anchor_right = 1.552
+anchor_bottom = 1.195
+offset_left = 682.0
+offset_top = 380.24
+offset_right = 752.92
+offset_bottom = 390.2
+pivot_offset = Vector2(159, -8)
+placeholder_text = "guess"
+alignment = 1
+max_length = 16
+expand_to_text_length = true
+
+[node name="SuccessMessage" type="Label" parent="Control/Wine/Panel"]
+layout_mode = 0
+offset_left = 706.0
+offset_top = 372.0
+offset_right = 800.0
+offset_bottom = 413.0
+pivot_offset = Vector2(142, 22)
+label_settings = SubResource("LabelSettings_sil2u")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+justification_flags = 131
+max_lines_visible = 1
+visible_characters = 14
+
+[node name="Maroon" type="Control" parent="Control"]
+light_mask = 0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 5.0
+offset_right = 5.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_5c407")
+script = ExtResource("1_o5qli")
+correct_answer = "maroon"
+success_color = Color(0.478894, 0.0802265, 7.67266e-08, 1)
+solved_text_color = Color(0.992157, 0.8, 0.584314, 1)
+
+[node name="Panel" type="Panel" parent="Control/Maroon"]
+layout_mode = 0
+offset_left = -46.0
+offset_top = -4.0
+offset_right = -6.0
+offset_bottom = 36.0
+
+[node name="HexOutLine" type="Polygon2D" parent="Control/Maroon/Panel"]
+show_behind_parent = true
+position = Vector2(273.131, 462.215)
+scale = Vector2(1.67695, 1.70851)
+color = Color(0.63, 0.61992, 0.5796, 0.996078)
+polygon = PackedVector2Array(231.5, -37, 171.5, -36.5, 146.617, 10.9489, 172.13, 58.9898, 233.084, 58.4045, 255.744, 10.9489)
+uv = PackedVector2Array(231.5, -37, 171.5, -36.5, 147, 13, 174, 57.5, 234, 55, 262.5, 8.5)
+
+[node name="HexFill" type="Polygon2D" parent="Control/Maroon/Panel"]
+show_behind_parent = true
+position = Vector2(282, 463)
+scale = Vector2(1.63489, 1.65047)
+color = Color(0, 0, 0, 1)
+polygon = PackedVector2Array(231.5, -37, 171.5, -36.5, 146.617, 10.9489, 172.13, 58.9898, 232.432, 59.377, 255.744, 10.9489)
+uv = PackedVector2Array(231.5, -37, 171.5, -36.5, 147, 13, 174, 57.5, 234, 55, 262.5, 8.5)
+
+[node name="PromptLabel" type="Label" parent="Control/Maroon/Panel"]
+layout_mode = 0
+offset_left = 546.0
+offset_top = 424.0
+offset_right = 678.0
+offset_bottom = 492.0
+pivot_offset = Vector2(147, 51)
+text = "to abandon on an island?"
+label_settings = SubResource("LabelSettings_1j03x")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+uppercase = true
+max_lines_visible = 2
+text_direction = 1
+
+[node name="EnterHere" type="LineEdit" parent="Control/Maroon/Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.175
+anchor_top = 0.544
+anchor_right = 1.552
+anchor_bottom = 1.195
+offset_left = 543.0
+offset_top = 465.24
+offset_right = 613.92
+offset_bottom = 475.2
+pivot_offset = Vector2(159, -8)
+placeholder_text = "guess"
+alignment = 1
+max_length = 16
+expand_to_text_length = true
+
+[node name="SuccessMessage" type="Label" parent="Control/Maroon/Panel"]
+layout_mode = 0
+offset_left = 567.0
+offset_top = 457.0
+offset_right = 661.0
+offset_bottom = 498.0
+pivot_offset = Vector2(142, 22)
+label_settings = SubResource("LabelSettings_56k1r")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+justification_flags = 131
+max_lines_visible = 1
+visible_characters = 14
+
+[node name="Cherry" type="Control" parent="Control"]
+light_mask = 0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 5.0
+offset_right = 5.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_5c407")
+script = ExtResource("1_o5qli")
+correct_answer = "Cherry"
+success_color = Color(1, 0, 0.286275, 1)
+solved_text_color = Color(0.18, 0.033, 0, 1)
+
+[node name="Panel" type="Panel" parent="Control/Cherry"]
+layout_mode = 0
+offset_left = -47.0
+offset_top = 1.0
+offset_right = -7.0
+offset_bottom = 41.0
+
+[node name="HexOutLine" type="Polygon2D" parent="Control/Cherry/Panel"]
+show_behind_parent = true
+position = Vector2(410.131, 217.215)
+scale = Vector2(1.67695, 1.70851)
+color = Color(0.63, 0.61992, 0.5796, 0.996078)
+polygon = PackedVector2Array(231.5, -37, 171.5, -36.5, 146.617, 10.9489, 172.13, 58.9898, 233.084, 58.4045, 255.744, 10.9489)
+uv = PackedVector2Array(231.5, -37, 171.5, -36.5, 147, 13, 174, 57.5, 234, 55, 262.5, 8.5)
+
+[node name="HexFill" type="Polygon2D" parent="Control/Cherry/Panel"]
+show_behind_parent = true
+position = Vector2(419, 218)
+scale = Vector2(1.63489, 1.65047)
+color = Color(0, 0, 0, 1)
+polygon = PackedVector2Array(231.5, -37, 171.5, -36.5, 146.617, 10.9489, 172.13, 58.9898, 232.432, 59.377, 255.744, 10.9489)
+uv = PackedVector2Array(231.5, -37, 171.5, -36.5, 147, 13, 174, 57.5, 234, 55, 262.5, 8.5)
+
+[node name="PromptLabel" type="Label" parent="Control/Cherry/Panel"]
+layout_mode = 0
+offset_left = 676.0
+offset_top = 186.0
+offset_right = 822.0
+offset_bottom = 254.0
+pivot_offset = Vector2(147, 51)
+text = "soda, icecream or chapstick?"
+label_settings = SubResource("LabelSettings_1j03x")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+uppercase = true
+max_lines_visible = 2
+text_direction = 1
+
+[node name="EnterHere" type="LineEdit" parent="Control/Cherry/Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.175
+anchor_top = 0.544
+anchor_right = 1.552
+anchor_bottom = 1.195
+offset_left = 680.0
+offset_top = 220.24
+offset_right = 750.92
+offset_bottom = 230.2
+pivot_offset = Vector2(159, -8)
+placeholder_text = "guess"
+alignment = 1
+max_length = 16
+expand_to_text_length = true
+
+[node name="SuccessMessage" type="Label" parent="Control/Cherry/Panel"]
+layout_mode = 0
+offset_left = 704.0
+offset_top = 212.0
+offset_right = 798.0
+offset_bottom = 253.0
+pivot_offset = Vector2(142, 22)
+label_settings = SubResource("LabelSettings_ok1i2")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+justification_flags = 131
+max_lines_visible = 1
+visible_characters = 14
+
+[connection signal="text_submitted" from="Control/Red/Panel/EnterHere" to="Control/Red" method="_on_enter_here_text_submitted"]
+[connection signal="text_submitted" from="Control/Scarlet/Panel/EnterHere" to="Control/Scarlet" method="_on_enter_here_text_submitted"]
+[connection signal="text_submitted" from="Control/Ruby/Panel/EnterHere" to="Control/Ruby" method="_on_enter_here_text_submitted"]
+[connection signal="text_submitted" from="Control/Burgundy/Panel/EnterHere" to="Control/Burgundy" method="_on_enter_here_text_submitted"]
+[connection signal="text_submitted" from="Control/Wine/Panel/EnterHere" to="Control/Wine" method="_on_enter_here_text_submitted"]
+[connection signal="text_submitted" from="Control/Maroon/Panel/EnterHere" to="Control/Maroon" method="_on_enter_here_text_submitted"]
+[connection signal="text_submitted" from="Control/Cherry/Panel/EnterHere" to="Control/Cherry" method="_on_enter_here_text_submitted"]
